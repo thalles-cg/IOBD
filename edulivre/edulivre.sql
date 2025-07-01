@@ -33,13 +33,13 @@ INSERT INTO curso (id, titulo, descricao, avaliacao) VALUES
   "media": 4.5,
   "comentarios": [
     {
-      "usuario_id": "123e4567-e89b-12d3-a456-426614174000",
+      "usuario_id": "550f733c-9f9c-41c7-b269-6182cacecf1d",
       "nota": 5,
       "comentario": "Excelente curso!",
       "data": "2025-05-20"
     },
     {
-      "usuario_id": "123e4567-e89b-12d3-a456-426614174001",
+      "usuario_id": "dc1a3c83-15b0-4a39-99f9-bb6d0b6157f5",
       "nota": 4,
       "comentario": "Gostei, mas poderia ter mais exemplos.",
       "data": "2025-05-21"
