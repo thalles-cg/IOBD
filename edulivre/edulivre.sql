@@ -110,14 +110,3 @@ INSERT INTO conteudo (curso_id, titulo, descricao, tipo, arquivo) VALUES
     'slide',
     decode('504b030414000600080000002100', 'hex') 
 );
-
-SELECT curso.titulo, (curso.avaliacao->>'media')::float AS media, COUNT(matricula.curso_id) AS total_matriculados
-FROM curso 
-INNER JOIN matricula ON curso.id = matricula.curso_id
-GROUP BY curso.titulo, curso.avaliacao;
-
-SELECT curso.titulo, (curso.avaliacao->>'media')::float AS media, COUNT(matricula.curso_id) AS total_matriculados
-FROM curso 
-INNER JOIN matricula ON curso.id = matricula.curso_id
-WHERE curso.titulo ILIKE 'Banco de Dados PostgreSQL'
-GROUP BY curso.titulo, curso.avaliacao;

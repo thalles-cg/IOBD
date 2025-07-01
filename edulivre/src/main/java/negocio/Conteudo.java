@@ -2,13 +2,15 @@ package negocio;
 
 public class Conteudo {
     private int id;
+    private Curso curso;
     private String titulo;
     private String descricao;
     private TipoConteudo tipoConteudo;
     private byte[] arquivo;
-    
-    public Conteudo(int id, String titulo, String descricao, TipoConteudo tipoConteudo, byte[] arquivo) {
+
+    public Conteudo(int id, Curso curso, String titulo, String descricao, TipoConteudo tipoConteudo, byte[] arquivo) {
         this.id = id;
+        this.curso = curso;
         this.titulo = titulo;
         this.descricao = descricao;
         this.tipoConteudo = tipoConteudo;
@@ -21,6 +23,14 @@ public class Conteudo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
     public String getTitulo() {
@@ -54,6 +64,8 @@ public class Conteudo {
     public void setArquivo(byte[] arquivo) {
         this.arquivo = arquivo;
     }
-
+    
+    
+    
     
 }
