@@ -22,4 +22,9 @@ public class CursoResumo {
     public int getTotalMatriculados() {
         return totalMatriculados;
     }
+
+    @Override
+    public String toString() {
+        return "CursoResumo [titulo=" + titulo + ", media=" + media + ", totalMatriculados=" + totalMatriculados + "]";
+    }
 }

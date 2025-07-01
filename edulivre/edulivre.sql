@@ -28,7 +28,7 @@ CREATE TABLE curso (
 );
 
 INSERT INTO curso (id, titulo, descricao, avaliacao) VALUES
-(uuid_generate_v4(), 'Java Básico', 'Curso introdutório de Java para iniciantes.',
+(uuid_generate_v4(), 'Java Basico', 'Curso introdutório de Java para iniciantes.',
 '{
   "media": 4.5,
   "comentarios": [
@@ -66,7 +66,7 @@ CREATE TABLE matricula (
 INSERT INTO matricula (usuario_id, curso_id) VALUES
 (
     (SELECT id FROM usuario WHERE email = 'alice@example.com'),
-    (SELECT id FROM curso WHERE titulo = 'Java Básico')
+    (SELECT id FROM curso WHERE titulo = 'Java Basico')
 ),
 (
     (SELECT id FROM usuario WHERE email = 'alice@example.com'),
@@ -90,14 +90,14 @@ CREATE TABLE conteudo (
 
 INSERT INTO conteudo (curso_id, titulo, descricao, tipo, arquivo) VALUES
 (
-    (SELECT id FROM curso WHERE titulo = 'Java Básico'),
+    (SELECT id FROM curso WHERE titulo = 'Java Basico'),
     'Introdução ao Java',
     'Vídeo explicando o básico do Java.',
     'video',
     decode('ffd8ffe000104a46494600010101006000600000ffe1', 'hex') 
 ),
 (
-    (SELECT id FROM curso WHERE titulo = 'Java Básico'),
+    (SELECT id FROM curso WHERE titulo = 'Java Basico'),
     'Material PDF - Java',
     'Arquivo PDF com material complementar.',
     'pdf',
@@ -111,6 +111,13 @@ INSERT INTO conteudo (curso_id, titulo, descricao, tipo, arquivo) VALUES
     decode('504b030414000600080000002100', 'hex') 
 );
 
-SELECT curso.titulo, curso.avaliacao->'media' as media, count(matricula.curso_id) 
-FROM curso INNER JOIN matricula ON (curso.id = matricula.curso_id)
+SELECT curso.titulo, (curso.avaliacao->>'media')::float AS media, COUNT(matricula.curso_id) AS total_matriculados
+FROM curso 
+INNER JOIN matricula ON curso.id = matricula.curso_id
+GROUP BY curso.titulo, curso.avaliacao;
+
+SELECT curso.titulo, (curso.avaliacao->>'media')::float AS media, COUNT(matricula.curso_id) AS total_matriculados
+FROM curso 
+INNER JOIN matricula ON curso.id = matricula.curso_id
+WHERE curso.titulo ILIKE 'Banco de Dados PostgreSQL'
 GROUP BY curso.titulo, curso.avaliacao;
