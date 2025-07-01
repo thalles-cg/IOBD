@@ -110,3 +110,7 @@ INSERT INTO conteudo (curso_id, titulo, descricao, tipo, arquivo) VALUES
     'slide',
     decode('504b030414000600080000002100', 'hex') 
 );
+
+SELECT curso.titulo, curso.avaliacao->'media' as media, count(matricula.curso_id) 
+FROM curso INNER JOIN matricula ON (curso.id = matricula.curso_id)
+GROUP BY curso.titulo, curso.avaliacao;
