@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.Arrays;
+
 public class Conteudo {
     private int id;
     private String titulo;
@@ -55,5 +57,9 @@ public class Conteudo {
         this.arquivo = arquivo;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Conteudo [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", tipoConteudo="
+                + tipoConteudo + "]";
+    }
 }
