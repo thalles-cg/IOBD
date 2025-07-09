@@ -1,6 +1,5 @@
 package negocio;
 
-import java.util.Arrays;
 
 public class Conteudo {
     private int id;

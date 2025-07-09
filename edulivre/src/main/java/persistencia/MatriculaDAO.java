@@ -2,12 +2,10 @@ package persistencia;
 
 import java.sql.*;
 import java.util.UUID;
-import negocio.Matricula;
 
 public class MatriculaDAO {
     
     public String inserirMatricula(UUID usuarioId, UUID cursoId) throws Exception {
-        // Validação 1: O usuário já está matriculado?
         String checkSql = "SELECT COUNT(*) FROM matricula WHERE usuario_id = ? AND curso_id = ?";
         
         try (Connection con = new ConexaoPostgreSQL().getConnection()) {
@@ -20,7 +18,6 @@ public class MatriculaDAO {
                 }
             }
 
-            // Se a validação passar, prossiga com a inserção
             String insertSql = "INSERT INTO matricula (usuario_id, curso_id) VALUES (?, ?)";
             try (PreparedStatement psInsert = con.prepareStatement(insertSql)) {
                 psInsert.setObject(1, usuarioId);
