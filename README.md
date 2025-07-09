@@ -36,7 +36,7 @@ psql -h localhost -U postgres
 Digite a senha quando solicitado, e depois execute:
 
 (Se preciso, altere a senha dentro de negocio/ConexaoPostgreSQL)
-![alt text](image.png)
+![alt text](imgs\image.png)
 
 ```sql
 \i caminho/para/edulivre.sql
